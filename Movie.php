@@ -8,6 +8,7 @@ class Movie {
 	private $_synospis;
 	private $_category;
 	private $_realisator;
+	private $_casting;
 	
 	public function __construct($title,$realeasedate,$last,$synopsis,$category,$realisator)
 	{
@@ -19,8 +20,15 @@ class Movie {
 		$this->_category->addMovie($this);
 		$this->_realisator = $realisator;
 		$this->_realisator->addMovie($this);
+		$this->_casting= [];
 	}
 
+	public function getInfoCasting() {
+		foreach($this->_casting as $key);
+	}
+	public function addCasting ($newCasting){
+		$this->_casting[]=$newCasting;
+	 }
 	public function getTitle(){
         return $this->_title;
 	}
@@ -43,7 +51,6 @@ class Movie {
 	public function getInfosMovie(){
 		return $this->_title." ".$this->_realeasedate." ".$this->_last." ".$this->_synopsis." ".$this->_category." ".$this->_realisator ."<br>";
 	}
-
 	public function __toString()
 	{
 		return $this->getTitle() . " (". $this->getRealeaseDate(). ")";
